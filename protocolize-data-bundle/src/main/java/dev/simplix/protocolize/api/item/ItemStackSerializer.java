@@ -37,7 +37,6 @@ public final class ItemStackSerializer {
     private static final MappingProvider MAPPING_PROVIDER = Protocolize.mappingProvider();
     private static final ComponentConverter CONVERTER = Protocolize.getService(ComponentConverterProvider.class)
         .platformConverter();
-
     private ItemStackSerializer() {
     }
 
@@ -74,9 +73,10 @@ public final class ItemStackSerializer {
                 }
             }
             ItemType type = lookupItemType(id, durability, protocolVersion);
-            if (type == null) {
+            /* if (type == null) {
                 log.warn("Don't know what item " + id + " at protocol " + protocolVersion + " should be.");
             }
+             */
             ItemStack out = new ItemStack(type, amount, durability);
             out.displayNameJson(displayNameJson);
             out.loreJson(loreJson == null ? new ArrayList<>() : loreJson);
